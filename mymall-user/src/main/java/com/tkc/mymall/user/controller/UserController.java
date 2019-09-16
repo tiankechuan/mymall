@@ -4,6 +4,7 @@ import com.tkc.mymall.user.model.UmsMember;
 import com.tkc.mymall.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,5 +27,9 @@ public class UserController {
     @GetMapping("getAllUsr")
     public List<UmsMember> getAllUsr() {
         return userService.getAllUsr();
+    }
+    @GetMapping("{id}/item")
+    public List<UmsMember> getById(@PathVariable("id") String id){
+        return userService.getById(id);
     }
 }
