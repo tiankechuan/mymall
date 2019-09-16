@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="1 seconds">
+
+    <contextName>logback</contextName>
+    <property name="log.path" value="mymall-user.log"/>
+	<property name="log.root.level" value="debug"></property>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}.%d{yyyy-MM-dd}.zip</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{36} [%file : %line] %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    
+    <!-- 指定日志级别 -->
+	<logger name="org.springframework" level="error" />
+	<logger name="org.mybatis.spring" level="error" />
+	<logger name="org.apache.ibatis.logging.LogFactory" level="error" />
+	<logger name="org.eclipse.jetty" level="error" />
+	<logger name="org.hibernate.validator" level="error" />
+	<logger name="org.jboss.logging" level="error" />
+	<logger name="org.apache.catalina" level="error" />
+	<logger name="org.apache.util" level="error" />
+	<logger name="org.apache.http" level="warn" />
+    <logger name="org.quartz" level="error" />
+    <logger name="o.a.a" level="warn" />
+    <logger name="o.quartz.core" level="error" />
+    <logger name="o.q.simpl" level="error" />
+	<logger name="com.zaxxer" level="warn" />
+	<logger name="tk.mybatis" level="error" />
+	<logger name="i.l.core.protocol" level="error" />
+	<logger name="io.netty" level="error" />
+
+    <root level="debug">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+
+</configuration>
